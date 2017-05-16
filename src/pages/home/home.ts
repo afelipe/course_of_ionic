@@ -81,7 +81,8 @@ export class HomePage {
       alert('error');
         console.log('Error: ' + JSON.stringify(error));    // In case of error
     }
-    );
+    );    
+  //TODO añadir slides por parametro
         let modal=  this.modalCtrl.create(SlidesPage);
         modal.present();
     }
