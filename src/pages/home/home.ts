@@ -18,7 +18,7 @@ export class HomePage {
   public base64Image: string;
  constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
      public modalCtrl: ModalController, private camera:Camera , private geolocation: Geolocation,
-     private imagePicker: ImagePicker) {
+     private imagePicker: ImagePicker,  private slidesPage: SlidesPage) {
  
     console.log('Hello HomeComponent Component');
     this.text = 'Hello World';
@@ -50,6 +50,17 @@ export class HomePage {
   }
 
   showAlbum(){
+     let options = {
+    maximumImagesCount: 8,
+    width: 500,
+    height: 500,
+    quality: 75
+  }
+
+  this.imagePicker.getPictures(options).then(
+    file_uris => this.navCtrl.push(SlidesPage, {images: file_uris}),
+  SlidesPage.
+  );
     let modal = this.modalCtrl.create(SlidesPage);
     
     modal.present();
@@ -70,19 +81,7 @@ export class HomePage {
         console.log(err);
     });
   }
-  openGallery(): void {
-  let options = {
-    maximumImagesCount: 8,
-    width: 500,
-    height: 500,
-    quality: 75
-  }
 
-  this.imagePicker.getPictures(options).then(
-    file_uris => this.navCtrl.push(SlidesPage, {images: file_uris}),
-    err => console.log('uh oh')
-  );
-}
 
 
 
