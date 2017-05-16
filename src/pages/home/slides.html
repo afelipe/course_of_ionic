@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Galeria de fotos
+    </ion-title>
+
+    <ion-buttons end>
+    <button ion-button icon-only (click)="cerrar()">
+      <ion-icon name="close" item-left> </ion-icon>
+    </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+ <ion-slides pager>
+
+  <ion-slide style="background-color: green">
+    <h2>Slide 1</h2>
+    <button ion-button (click)="openMenu()">
+           Compartir
+    </button>
+  </ion-slide>
+
+  <ion-slide style="background-color: blue">
+    <h2>Slide 2</h2>
+  </ion-slide>
+
+  <ion-slide style="background-color: red">
+    <h2>Slide 3</h2>
+  </ion-slide>
+
+</ion-slides>
+
+</ion-content>
