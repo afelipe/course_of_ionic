@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController, ViewController, ActionSheetController, Platform } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
+<<<<<<< HEAD
 import { Slides, NavParams } from 'ionic-angular';
+=======
+import { Slides } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+>>>>>>> cc6226ee7b9a88c94fbfe01ad25cd9b60e4a6066
 
 @Component({
   selector: 'slides',
@@ -16,10 +21,16 @@ export class SlidesPage {
        
     ];
 
+<<<<<<< HEAD
     constructor(public navCtrl: NavController, public toastCtrl: ToastController, public vctrl : ViewController, 
         public actionsheetCtrl: ActionSheetController,
         public platform: Platform, public navParams:NavParams) {
             this.slidesArray = navParams.get("slides");
+=======
+    constructor(public navCtrl: NavController, public toastCtrl: ToastController, public vctrl : 
+        ViewController, public actionsheetCtrl: ActionSheetController,
+        public platform: Platform, private socialSharing: SocialSharing) {
+>>>>>>> cc6226ee7b9a88c94fbfe01ad25cd9b60e4a6066
     }
 
     cerrar(){
@@ -35,10 +46,18 @@ export class SlidesPage {
                 text: 'Facebook',
                 icon: !this.platform.is('ios') ? 'logo-facebook' : null,
                 handler: () => {
-                    let currentIndex = this.slides.getActiveIndex();
-                    console.log("Current index in Facebook", currentIndex);
-                    
-                    //console.log(slidesArray[currentIndex]);
+                    //let currentIndex = this.slides.getActiveIndex();
+                    //console.log("Current index in Facebook", currentIndex);
+                    console.log(this.slidesArray[this.slides.getActiveIndex()].title);
+
+                    let titulo = this.slidesArray[this.slides.getActiveIndex()].title;
+                    let imagen = this.slidesArray[this.slides.getActiveIndex()].image;
+
+                    this.socialSharing.canShareVia("com.facebook.katana","","", "","").then(() => { 
+                        //alert("facebook ok");
+                    }).catch(() => {alert("facebook error");});
+
+                   this.socialSharing.shareViaFacebook(titulo, imagen, "url");
                 }
                 },
                 {
@@ -46,6 +65,16 @@ export class SlidesPage {
                 icon: !this.platform.is('ios') ? 'logo-twitter' : null,
                 handler: () => {
                     console.log('Twitter clicked');
+                    console.log(this.slidesArray[this.slides.getActiveIndex()].title);
+                    
+                    let titulo = this.slidesArray[this.slides.getActiveIndex()].title;
+                    let imagen = this.slidesArray[this.slides.getActiveIndex()].image;
+
+                    this.socialSharing.canShareVia("com.twitter.android","","", "","").then(() => { 
+                        //alert("Twitter ok");
+                    }).catch(() => {alert("Twitter error");});
+
+                    this.socialSharing.shareViaTwitter(titulo, imagen, "url");
                 }
                 },
                 {
@@ -53,6 +82,14 @@ export class SlidesPage {
                 icon: !this.platform.is('ios') ? 'logo-whatsapp' : null,
                 handler: () => {
                     console.log('Whatsapp clicked');
+                    let titulo = this.slidesArray[this.slides.getActiveIndex()].title;
+                    let imagen = this.slidesArray[this.slides.getActiveIndex()].image;
+
+                    this.socialSharing.canShareVia("com.whatsapp","","", "","").then(() => { 
+                        //alert("Whatsapp ok");
+                    }).catch(() => {alert("Whatsapp error");});
+
+                    this.socialSharing.shareViaWhatsApp(titulo, null, null);
                 }
                 
                 }

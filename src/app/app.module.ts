@@ -9,12 +9,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SlidesPage } from "../pages/home/slides";
 import { ImagePicker } from '@ionic-native/image-picker';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage, SlidesPage
+    HomePage, 
+    SlidesPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,SlidesPage
+    HomePage,
+    SlidesPage
   ],
   providers: [
     StatusBar,
@@ -31,7 +33,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
     Geolocation,
-    ImagePicker
+    ImagePicker,
+    SocialSharing
 
 
   ]
