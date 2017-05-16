@@ -5,39 +5,24 @@
     </ion-title>
 
     <ion-buttons end>
-
-    <button ion-button icon-only (click)="openMenu(1)">
-      <ion-icon name="share" item-left> </ion-icon>
-    </button>
-    
-    <button ion-button icon-only (click)="cerrar()">
-      <ion-icon name="close" item-left> </ion-icon>
-    </button>
+        <button ion-button icon-only (click)="openMenu(1)">
+        <ion-icon name="share" item-left> </ion-icon>
+        </button>
+        
+        <button ion-button icon-only (click)="cerrar()">
+        <ion-icon name="close" item-left> </ion-icon>
+        </button>
     </ion-buttons>
 
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  
- <ion-slides pager>
-
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
-    <button ion-button icon-right (click)="openMenu(1) ">
-          Compartir 
-           <ion-icon name="share">  </ion-icon>
-    </button>
-  </ion-slide>
-
-  <ion-slide style="background-color: blue">
-    <h2>Slide 2</h2>
-  </ion-slide>
-
-  <ion-slide style="background-color: red">
-    <h2>Slide 3</h2>
-  </ion-slide>
-
-</ion-slides>
-
+    <ion-slides pager>
+        <ion-slide *ngFor="let slide of slidesArray">
+        <img [src]="slide.image" class="slide-image"/>
+        <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+        <p [innerHTML]="slide.description"></p>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
