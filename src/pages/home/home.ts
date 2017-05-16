@@ -52,7 +52,6 @@ export class HomePage {
   showAlbum(){
     let modal = this.modalCtrl.create(SlidesPage);
     
-  
     modal.present();
   }
 

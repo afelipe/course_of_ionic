@@ -5,6 +5,11 @@
     </ion-title>
 
     <ion-buttons end>
+
+    <button ion-button icon-only (click)="openMenu(1)">
+      <ion-icon name="share" item-left> </ion-icon>
+    </button>
+    
     <button ion-button icon-only (click)="cerrar()">
       <ion-icon name="close" item-left> </ion-icon>
     </button>
@@ -19,8 +24,9 @@
 
   <ion-slide style="background-color: green">
     <h2>Slide 1</h2>
-    <button ion-button (click)="openMenu()">
-           Compartir
+    <button ion-button icon-right (click)="openMenu(1) ">
+          Compartir 
+           <ion-icon name="share">  </ion-icon>
     </button>
   </ion-slide>
 
