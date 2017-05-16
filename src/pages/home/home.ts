@@ -20,6 +20,14 @@ export class HomePage {
     });
 
     toast.present(toast);
-}
+  }
+
+  takePhoto(){
+
+  }
+
+  showAlbum(){
+    
+  }
 
 }

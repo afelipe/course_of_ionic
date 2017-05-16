@@ -7,11 +7,24 @@
 </ion-header>
 
 <ion-content padding>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-only (click)="takePhoto()" block>Hacer Foto </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-only (click)="showAlbum()" block>Ver Album</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
   <button ion-button block (click)="showToast('middle')">Mostrar Toast </button>
 
-
-
-    <ion-slides pager>
+ <ion-slides pager>
 
   <ion-slide style="background-color: green">
     <h2>Slide 1</h2>
