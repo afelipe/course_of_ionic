@@ -9,6 +9,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SlidesPage } from "../pages/home/slides";
+import { ImagePicker } from '@ionic-native/image-picker';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { SlidesPage } from "../pages/home/slides";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    Geolocation
+    Geolocation,
+    ImagePicker
 
   ]
 })

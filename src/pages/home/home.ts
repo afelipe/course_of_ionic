@@ -4,6 +4,7 @@ import {Camera} from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ToastController, ModalController } from 'ionic-angular';
 import { SlidesPage } from "./slides";
+import { ImagePicker } from '@ionic-native/image-picker';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class HomePage {
   position: string;
   public base64Image: string;
  constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
- public modalCtrl: ModalController, private camera:Camera , private geolocation: Geolocation) {
+     public modalCtrl: ModalController, private camera:Camera , private geolocation: Geolocation,
+     private imagePicker: ImagePicker) {
  
     console.log('Hello HomeComponent Component');
     this.text = 'Hello World';
@@ -60,7 +62,8 @@ export class HomePage {
    this.camera.getPicture({
         destinationType: this.camera.DestinationType.DATA_URL,
         targetWidth: 1000,
-        targetHeight: 1000
+        targetHeight: 1000,
+        saveToPhotoAlbum:true
     }).then((imageData) => {
       // imageData is a base64 encoded string
         this.base64Image = "data:image/jpeg;base64," + imageData;
@@ -68,6 +71,20 @@ export class HomePage {
         console.log(err);
     });
   }
-  
+  openGallery(): void {
+  let options = {
+    maximumImagesCount: 8,
+    width: 500,
+    height: 500,
+    quality: 75
+  }
+
+  this.imagePicker.getPictures(options).then(
+    file_uris => this.navCtrl.push(SlidesPage, {images: file_uris}),
+    err => console.log('uh oh')
+  );
+}
+
+
 
 }
