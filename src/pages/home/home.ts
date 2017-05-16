@@ -3,8 +3,8 @@ import { NavController } from 'ionic-angular';
 import {Camera} from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ToastController, ModalController } from 'ionic-angular';
-import { SlidesPage } from "./slides";
 import { ImagePicker } from '@ionic-native/image-picker';
+import { SlidesPage } from './slides';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class HomePage {
   public base64Image: string;
  constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
      public modalCtrl: ModalController, private camera:Camera , private geolocation: Geolocation,
-     private imagePicker: ImagePicker,  private slidesPage: SlidesPage) {
+     private imagePicker: ImagePicker ) {
  
     console.log('Hello HomeComponent Component');
     this.text = 'Hello World';
@@ -56,15 +56,35 @@ export class HomePage {
     height: 500,
     quality: 75
   }
+ 
 
   this.imagePicker.getPictures(options).then(
-    file_uris => this.navCtrl.push(SlidesPage, {images: file_uris}),
-  SlidesPage.
-  );
-    let modal = this.modalCtrl.create(SlidesPage);
     
-    modal.present();
-  }
+   //file_uris => this.modalCtrl.create(SlidesPage, {slides: file_uris})
+        
+  function (results) {
+                // Loop through acquired images
+        let slidesTo:any[] = [];        
+        for (var i = 0; i < results.length; i++) {
+          alert(results[i]);
+            let slidesDetailTmp = {
+                title:"",
+                description:"",
+                image: ""+results[i]
+            };
+            alert("Despues1");
+            slidesTo.push(slidesDetailTmp); // Print image URI
+        }
+        
+       
+    }, function(error) {
+      alert('error');
+        console.log('Error: ' + JSON.stringify(error));    // In case of error
+    }
+    );
+        let modal=  this.modalCtrl.create(SlidesPage);
+        modal.present();
+    }
 
 
  takePhoto(){
