@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
+import { ToastController, ModalController } from 'ionic-angular';
+import { SlidesPage } from "./slides";
 
 @Component({
   selector: 'page-home',
@@ -8,7 +9,7 @@ import { ToastController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public modalCtrl: ModalController,) {
 
   }
 
@@ -27,7 +28,10 @@ export class HomePage {
   }
 
   showAlbum(){
+    let modal = this.modalCtrl.create(SlidesPage);
     
+  
+    modal.present();
   }
 
 }
