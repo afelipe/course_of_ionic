@@ -81,7 +81,7 @@ export class SlidesPage {
                         //alert("Whatsapp ok");
                     }).catch(() => {alert("Whatsapp error");});
 
-                    this.socialSharing.shareViaWhatsApp(titulo, null, null);
+                    this.socialSharing.shareViaWhatsApp(titulo, imagen, null);
                 }
                 
                 }

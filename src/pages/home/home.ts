@@ -66,6 +66,7 @@ export class HomePage {
         
    (results) => {
                 // Loop through acquired images 
+        this.slidesTo =[];
         for (var i = 0; i < results.length; i++) {
      
             let slidesDetailTmp = {
