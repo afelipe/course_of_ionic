@@ -2,12 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController, ViewController, ActionSheetController, Platform } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
-<<<<<<< HEAD
+
 import { Slides, NavParams } from 'ionic-angular';
-=======
-import { Slides } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
->>>>>>> cc6226ee7b9a88c94fbfe01ad25cd9b60e4a6066
 
 @Component({
   selector: 'slides',
@@ -21,17 +18,12 @@ export class SlidesPage {
        
     ];
 
-<<<<<<< HEAD
-    constructor(public navCtrl: NavController, public toastCtrl: ToastController, public vctrl : ViewController, 
-        public actionsheetCtrl: ActionSheetController,
-        public platform: Platform, public navParams:NavParams) {
-            this.slidesArray = navParams.get("slides");
-=======
+
     constructor(public navCtrl: NavController, public toastCtrl: ToastController, public vctrl : 
         ViewController, public actionsheetCtrl: ActionSheetController,
-        public platform: Platform, private socialSharing: SocialSharing) {
->>>>>>> cc6226ee7b9a88c94fbfe01ad25cd9b60e4a6066
-    }
+        public platform: Platform, private socialSharing: SocialSharing, public navParams:NavParams) {
+            this.slidesArray = navParams.get("slides");
+ }
 
     cerrar(){
         this.vctrl.dismiss();

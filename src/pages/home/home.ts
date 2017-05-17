@@ -16,6 +16,8 @@ export class HomePage {
   text: string;
   position: string;
   public base64Image: string;
+  slidesTo:any[] = [];  
+ 
  constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
      public modalCtrl: ModalController, private camera:Camera , private geolocation: Geolocation,
      private imagePicker: ImagePicker ) {
@@ -62,33 +64,35 @@ export class HomePage {
     
    //file_uris => this.modalCtrl.create(SlidesPage, {slides: file_uris})
         
-  function (results) {
-                // Loop through acquired images
-        let slidesTo:any[] = [];        
+   (results) => {
+                // Loop through acquired images 
         for (var i = 0; i < results.length; i++) {
-          alert(results[i]);
+     
             let slidesDetailTmp = {
                 title:"",
                 description:"",
                 image: ""+results[i]
             };
-            alert("Despues1");
-            slidesTo.push(slidesDetailTmp); // Print image URI
+ 
+            this.slidesTo.push(slidesDetailTmp); // Print image URI
         }
         
+        this.showModal( this.slidesTo);
        
-    }, function(error) {
+    }, (error) => {
       alert('error');
         console.log('Error: ' + JSON.stringify(error));    // In case of error
     }
     );    
   //TODO añadir slides por parametro
-        let modal=  this.modalCtrl.create(SlidesPage);
-        modal.present();
+       
     }
 
-
- takePhoto(){
+showModal(slidesTo:any[]){
+      let modal = this.modalCtrl.create(SlidesPage,{slides:slidesTo});
+        modal.present();
+}
+takePhoto(){
  
    this.camera.getPicture({
         destinationType: this.camera.DestinationType.DATA_URL,

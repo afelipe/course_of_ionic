@@ -11,11 +11,11 @@ import { SlidesPage } from "../pages/home/slides";
 import { ImagePicker } from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage, 
-    SlidesPage
+    HomePage, SlidesPage
   ],
   imports: [
     BrowserModule,
